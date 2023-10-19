@@ -16,11 +16,13 @@ import (
 )
 
 const (
-	compmode = iota
-	tracknummode
+	compmode     = iota
+	tracknummode = iota
 )
 
 const listHeight = 14
+
+var selectedCompany, selectedtn string
 
 var (
 	titleStyle        = lipgloss.NewStyle().MarginLeft(2)
@@ -32,11 +34,9 @@ var (
 )
 
 type item string
-
-func (i item) FilterValue() string { return "" }
-
 type itemDelegate struct{}
 
+func (i item) FilterValue() string                             { return "" }
 func (d itemDelegate) Height() int                             { return 1 }
 func (d itemDelegate) Spacing() int                            { return 0 }
 func (d itemDelegate) Update(_ tea.Msg, _ *list.Model) tea.Cmd { return nil }
@@ -88,10 +88,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 		case tea.KeyMsg:
 			switch keypress := msg.String(); keypress {
-			case "ctrl+c":
+			case "ctrl+c", "q":
 				m.quitting = true
 				return m, tea.Quit
-
 			case "enter":
 				i, ok := m.list.SelectedItem().(item)
 				if ok {
@@ -121,15 +120,17 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 func (m model) View() string {
 	if m.mode == compmode {
+		selectedCompany = m.choice
 		if m.choice != "" {
-			return quitTextStyle.Render(m.choice)
+			return quitTextStyle.Render("Selected company: " + m.choice)
 		}
 		if m.quitting {
-			return quitTextStyle.Render("No company selected. Quitting...")
+			return quitTextStyle.Render("No company selected. Quitting..")
 		}
 		return "\n" + m.list.View()
 	}
 
+	selectedtn = m.textInput.Value()
 	return fmt.Sprintf(
 		"Input tracking number\n\n%s\n\n%s",
 		m.textInput.View(),
@@ -139,9 +140,9 @@ func (m model) View() string {
 
 func selectcompany() string {
 	items := []list.Item{
-		item("Sagawa"),
-		item("Yamato"),
-		item("Japan Post"),
+		item("sagawa"),
+		item("yamato"),
+		item("jpost"),
 	}
 
 	const defaultWidth = 20
@@ -163,8 +164,8 @@ func selectcompany() string {
 		log.Fatal(err)
 		os.Exit(1)
 	}
-	fmt.Fprintln(os.Stderr, m.choice)
-	return m.choice
+
+	return selectedCompany
 }
 
 func inputtn() string {
@@ -184,5 +185,5 @@ func inputtn() string {
 		os.Exit(1)
 	}
 	fmt.Fprintln(os.Stderr, ti.Value())
-	return ti.Value()
+	return selectedtn
 }

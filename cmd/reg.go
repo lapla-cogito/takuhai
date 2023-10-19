@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"errors"
+	"fmt"
 	"github.com/spf13/cobra"
 	"takuhai/track"
 )
@@ -33,6 +34,7 @@ func (c *Cmd) regexec(cmd *cobra.Command, args []string) error {
 	if jp {
 		comp = "jpost"
 	}
+
 	if tracknum == "" {
 		tracknum = inputtn()
 	}
@@ -62,6 +64,7 @@ func (c *Cmd) regexec(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
+	fmt.Println("registered")
 	return nil
 }
 
@@ -69,8 +72,8 @@ func (c *Cmd) newregCmd() *cobra.Command {
 	var regCmd = &cobra.Command{
 		Use:   "reg",
 		Short: "Registers a package",
-		Long: `Registers a packega information by specifiying a tracking number and a company.`,
-		RunE: c.regexec,
+		Long:  `Registers a packega information by specifiying a tracking number and a company.`,
+		RunE:  c.regexec,
 	}
 	regCmd.Flags().BoolVarP(&sagawa, "sagawa", "s", false, "sagawa")
 	regCmd.Flags().BoolVarP(&yamato, "yamato", "y", false, "yamato")

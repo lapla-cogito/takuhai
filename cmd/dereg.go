@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"errors"
+	"fmt"
 	"github.com/spf13/cobra"
 )
 
@@ -40,6 +41,7 @@ func (c *Cmd) deregExec(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
+	fmt.Println("deregistered")
 	return nil
 }
 

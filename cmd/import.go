@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"errors"
+	"fmt"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v2"
 	"os"
@@ -41,6 +42,7 @@ func (c *Cmd) importExec(cmd *cobra.Command, args []string) error {
 	if err := c.list.Save(""); err != nil {
 		return err
 	}
+	fmt.Println("imported from" + importpath)
 
 	return nil
 }
