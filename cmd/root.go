@@ -59,6 +59,7 @@ currently, this application can track:
 		rootCmd.newderegCmd(),
 		rootCmd.newimportCmd(),
 		rootCmd.newexportCmd(),
+		rootCmd.newrenameCmd(),
 	)
 
 	return rootCmd

@@ -32,6 +32,7 @@ Available Commands:
   help        Help about any command
   import      Import package informations from exported yaml file
   reg         Registers a package
+  rename      Rename a package
   show        Shows the state of a specific package
 
 Flags:
@@ -47,6 +48,14 @@ $ takuhai reg --sagawa -t 1234567890 -n hoge
 ```
 
 --sagawaフラグには短縮系として-sがあります．同様に，--yamatoフラグは-y，--jpostフラグは-jとできます．
+
+## hogeと名前が付けられている荷物をfugaという名前に変更する
+
+```
+$ takuhai rename -o hoge -n fuga
+```
+
+-oオプションに変更したい荷物名を，-nオプションにどのような名前に変更するのかを指定してください．
 
 ### 追跡番号が1234567890の荷物を登録解除する
 ```

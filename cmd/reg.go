@@ -72,7 +72,7 @@ func (c *Cmd) newregCmd() *cobra.Command {
 	var regCmd = &cobra.Command{
 		Use:   "reg",
 		Short: "Registers a package",
-		Long:  `Registers a packega information by specifiying a tracking number and a company.`,
+		Long:  `Registers a package information by specifiying a tracking number and a company.`,
 		RunE:  c.regexec,
 	}
 	regCmd.Flags().BoolVarP(&sagawa, "sagawa", "s", false, "sagawa")

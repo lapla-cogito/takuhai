@@ -39,6 +39,7 @@ Available Commands:
   help        Help about any command
   import      Import package informations from exported yaml file
   reg         Registers a package
+  rename      Rename a package
   show        Shows the state of a specific package
 
 Flags:
@@ -53,6 +54,12 @@ Use "takuhai [command] --help" for more information about a command.
 
 ```
 $ takuhai reg --sagawa -t 1234567890 -n hoge
+```
+
+## Rename hoge package to fuga package
+
+```
+$ takuhai rename -o hoge -n fuga
 ```
 
 ## Deregister the package specified above
