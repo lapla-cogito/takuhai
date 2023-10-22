@@ -35,8 +35,16 @@ func (c *Cmd) regexec(cmd *cobra.Command, args []string) error {
 		comp = "jpost"
 	}
 
+	if comp == "" {
+		return errors.New("company is empty")
+	}
+
 	if tracknum == "" {
 		tracknum = inputtn()
+	}
+
+	if tracknum == "" {
+		return errors.New("tracking number is empty")
 	}
 
 	nimotu := &track.Pkg{
