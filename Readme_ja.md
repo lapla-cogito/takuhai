@@ -34,6 +34,7 @@ Available Commands:
   reg         Registers a package
   rename      Rename a package
   show        Shows the state of a specific package
+  timeline    Shows the timeline of a specific package
 
 Flags:
   -h, --help   help for takuhai
@@ -79,11 +80,25 @@ $ takuhai show -a
 $ takuhai show -t 1234567890
 ```
 
-これは追跡番号が登録されたときから現在までの荷物の詳細な動きを表示します．
+これは対象の荷物について現在のステータスを表示します．
 
 ### hogeと名前が付いた荷物について，配送状況の詳細を確認する
 ```
 $ takuhai show -n hoge
+```
+
+同様です．
+
+### 追跡番号が1234567890の荷物について，集荷されてからの動きを表示する
+```
+$ takuhai timeline -t 1234567890
+```
+
+これは追跡番号が登録されたときから現在までの荷物の詳細な動きを表示します．
+
+### hogeと名前が付いた荷物について，配送状況の詳細を確認する
+```
+$ takuhai timeline -n hoge
 ```
 
 同様です．

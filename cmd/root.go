@@ -60,6 +60,7 @@ currently, this application can track:
 		rootCmd.newimportCmd(),
 		rootCmd.newexportCmd(),
 		rootCmd.newrenameCmd(),
+		rootCmd.newtlCmd(),
 	)
 
 	return rootCmd
