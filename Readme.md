@@ -41,6 +41,7 @@ Available Commands:
   reg         Registers a package
   rename      Rename a package
   show        Shows the state of a specific package
+  timeline    Shows the timeline of a specific package
 
 Flags:
   -h, --help   help for takuhai
@@ -94,7 +95,21 @@ $ takuhai show -n hoge
 
 In the former example, the package information is specified by tracking number. If there are same numbers with different carriers, there should appear prompt to select which carrier you want to see the information.
 
-The latter example, specifies package information by the name you selected before.
+The latter example, specifies package information by the name you selected before. Both examples show the latest status of the package.
+
+## Get the timeline of a specific package
+
+```
+$ takuhai timeline -t 1234567890
+```
+
+or
+
+```
+$ takuhai timeline -n hoge
+```
+
+This shows the timeline of the package.
 
 # Export package information and share them
 
