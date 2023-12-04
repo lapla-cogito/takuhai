@@ -38,14 +38,14 @@ func (c *Cmd) tlExec(cmd *cobra.Command, args []string) error {
 			}
 		}
 		if err := c.list.Save(""); err != nil {
-			for _, tl := range resSagawa {
-				fmt.Printf("The package status: %s %s %s\n", tl.Date, tl.Status, tl.Office)
+			for i, tl := range resSagawa {
+				fmt.Printf("%d: %s %s %s\n", i+1, tl.Date, tl.Status, tl.Office)
 			}
 			return errors.New("failed to save latest status")
 		}
 
-		for _, tl := range resSagawa {
-			fmt.Printf("The package status: %s %s %s\n", tl.Date, tl.Status, tl.Office)
+		for i, tl := range resSagawa {
+			fmt.Printf("%d: %s %s %s\n", i+1, tl.Date, tl.Status, tl.Office)
 		}
 		return nil
 	}
@@ -58,14 +58,14 @@ func (c *Cmd) tlExec(cmd *cobra.Command, args []string) error {
 			}
 		}
 		if err := c.list.Save(""); err != nil {
-			for _, tl := range resYamato {
-				fmt.Printf("The package status: %s %s %s\n", tl.Date, tl.Status, tl.Office)
+			for i, tl := range resYamato {
+				fmt.Printf("%d: %s %s %s\n", i+1, tl.Date, tl.Status, tl.Office)
 			}
 			return errors.New("failed to save latest status")
 		}
 
-		for _, tl := range resYamato {
-			fmt.Printf("The package status: %s %s %s\n", tl.Date, tl.Status, tl.Office)
+		for i, tl := range resYamato {
+			fmt.Printf("%d: %s %s %s\n", i+1, tl.Date, tl.Status, tl.Office)
 		}
 		return nil
 	}
@@ -78,14 +78,14 @@ func (c *Cmd) tlExec(cmd *cobra.Command, args []string) error {
 			}
 		}
 		if err := c.list.Save(""); err != nil {
-			for _, tl := range resJPost {
-				fmt.Printf("The package status: %s %s %s\n", tl.Date, tl.Status, tl.Office)
+			for i, tl := range resJPost {
+				fmt.Printf("%d: %s %s %s\n", i+1, tl.Date, tl.Status, tl.Office)
 			}
 			return errors.New("failed to save latest status")
 		}
 
-		for _, tl := range resJPost {
-			fmt.Printf("The package status: %s %s %s\n", tl.Date, tl.Status, tl.Office)
+		for i, tl := range resJPost {
+			fmt.Printf("%d: %s %s %s\n", i+1, tl.Date, tl.Status, tl.Office)
 		}
 		return nil
 	}
